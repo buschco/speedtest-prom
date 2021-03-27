@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 [[ -z "${SERVER_ID}" ]] && server_id_arg='' || server_id_arg="${DEPLOY_ENV}"
 
