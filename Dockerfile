@@ -8,5 +8,8 @@ RUN apt-get update \
   && apt-get install speedtest -y
 RUN go get -u github.com/msoap/shell2http \
   && chmod +x bin/shell2http
-CMD ./bin/shell2http /metrics "speedtest --format=json --accept-license --accept-gdpr"
+RUN apt-get install jq -y
+COPY ./speedtest.sh ./
+RUN chmod +x speedtest.sh
+CMD ./bin/shell2http -port=9696 /metrics "./speedtest.sh"
 
