@@ -1,6 +1,8 @@
 #!/bin/sh
 
-speedtest_result=$(speedtest --format=json --accept-license --accept-gdpr)
+[[ -z "${SERVER_ID}" ]] && server_id_arg='' || server_id_arg="${DEPLOY_ENV}"
+
+speedtest_result=$(speedtest --format=json --accept-license --accept-gdpr "$server_id_arg")
 
 download=$(printf "%s" "$speedtest_result" | jq '.download.bandwidth * 8 / 1000000')
 upload=$(printf "%s" "$speedtest_result" | jq '.upload.bandwidth     * 8 / 1000000')
