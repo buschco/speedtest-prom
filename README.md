@@ -31,3 +31,13 @@ environment:
 ```
 
 To get the serverId run `speedtest -L`.
+
+## build
+
+idk how if there is an easier way to build the image for arm. I got it by running this command
+
+```sh
+docker buildx build --platform linux/amd64,linux/arm64,linux/arm/v7 -t buschco/speedtest-prom --push .
+```
+
+It works like a charm. But all the tools also have an arm build. Maybe I am just missing some configuration here 🤷
