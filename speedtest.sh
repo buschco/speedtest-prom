@@ -10,8 +10,9 @@ ping=$(printf "%s" "$speedtest_result" | jq '.ping.latency')
 
 printf "# TYPE speedtest_megabits_per_second gauge
 # HELP speedtest_megabits_per_second Speed measured in megabits per second
-speedtest_megabits_per_second{direction="downstream"} %f
-speedtest_megabits_per_second{direction="upstream"} %f
+speedtest_megabits_per_second{direction=\"downstream\"} %f
+speedtest_megabits_per_second{direction=\"upstream\"} %f
 # TYPE speedtest_ping gauge
 # HELP speedtest_ping Ping in ms
-speedtest_ping %f" $download $upload $ping
+speedtest_ping %f
+" $download $upload $ping
